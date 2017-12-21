@@ -1,6 +1,6 @@
 ﻿# Author: Ivan Batis
 # Script.ps1
-#
+# Last Saved: Today
 $services = Get-Service
 $ComputerInfo = Get-WMIObject Win32_ComputerSystem
 Write-Host "----=====Computer Info====-----" -ForegroundColor Green
