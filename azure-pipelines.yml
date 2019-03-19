@@ -21,7 +21,8 @@ steps:
 - powershell: |
     write-host "Agent.BuildDirectory:" $(Agent.BuildDirectory)
     write-host "##vso[task.setvariable variable=myOutputVar;isOutput=true]this is the value"
-    write-host "My Variable:" $(myOutputVar)
+    write-host "My Variable:" $(ShowSomeVariables.myOutputVar)
+  errorActionPreference: continue
   name: ShowSomeVariables
 
 - powershell: |
