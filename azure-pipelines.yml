@@ -18,22 +18,19 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-- powershell: echo "##vso[task.setvariable variable=myOutputVar;isOutput=true]this is the value"
-  name: setvarStep
-
-- powershell: write-host "myOutputVar:" $(setvarStep.myOutputVar)
-  name: echovar
-
-- powershell: write-host "Agent.BuildDirectory:" $(Agent.BuildDirectory)
-  name: AgentBuildDir
+- powershell: |
+  write-host "Agent.BuildDirectory:" $(Agent.BuildDirectory)
+  echo "##vso[task.setvariable variable=myOutputVar;isOutput=true]this is the value"
+  write-host "myOutputVar:" $(myOutputVar)
+  name: ShowSomeVariables
 
 - powershell: |
    # Write your powershell commands here.
+   Write-Host "Listing PS1 files on C:\"
+   gci -Path C:\ *.ps1 -Recurse
    Write-Host "Listing ps1 files:" $(Build.Repository.LocalPath)
    gci -Path $(Build.Repository.LocalPath).ps1 -Recurse
-   Write-Host "Listing C:\"
-   gci -Path c:\ -Recurse
    
   errorActionPreference: continue
   workingDirectory: '\'
-  displayName: 'PS Script to list Folders'
+  displayName: 'PS Script to list PS1 files'
