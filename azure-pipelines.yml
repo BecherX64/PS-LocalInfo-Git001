@@ -26,3 +26,14 @@ steps:
 
 - powershell: write-host "Agent.BuildDirectory:" $(Agent.BuildDirectory)
   name: AgentBuildDir
+
+- powershell: |
+   # Write your powershell commands here.
+   Write-Host "Listing ps1 files"
+   gci -Path $(Build.Repository.LocalPath).ps1 -Recurse
+   Write-Host "Listing C:\Temp"
+   gci -Path c:\temp
+   
+  errorActionPreference: continue
+  workingDirectory: '\'
+  displayName: 'PS Script to list Folders'
