@@ -1,8 +1,6 @@
 ﻿# Author: Ivan Batis
 # Script.ps1
-# Last Saved: Today
-
-#Branch 02 & Commit 03
+# Last Saved: 03/19/2019
 
 $Output = "C:\Temp\OutPut_" + $date + "_" + $Time + ".txt"
 If (Test-Path $Output) 
