@@ -18,7 +18,8 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-- powershell: Write-Host "This is a script that could use $env:SYSTEM_ACCESSTOKEN"
-  env:
-    SYSTEM_ACCESSTOKEN: $(system.AccesToken)  
-  displayName: 'My Custom script'
+- powershell: echo "##vso[task.setvariable variable=myOutputVar;isOutput=true]this is the value"
+  name: setvarStep
+- script: echo $(setvarStep.myOutputVar)
+  name: echovar
+- powershell: write-host "Agent.BuildDirectory:" $(Agent.BuildDirectory)
