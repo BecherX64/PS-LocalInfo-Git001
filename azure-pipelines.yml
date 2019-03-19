@@ -20,9 +20,9 @@ steps:
 
 - powershell: |
   write-host "Agent.BuildDirectory:" $(Agent.BuildDirectory)
-  echo "##vso[task.setvariable variable=myOutputVar;isOutput=true]this is the value"
+  write-host "##vso[task.setvariable variable=myOutputVar;isOutput=true]My Variable Fero BANAN"
   write-host "myOutputVar:" $(myOutputVar)
-  name: ShowSomeVariables
+name: ShowSomeVariables
 
 - powershell: |
    # Write your powershell commands here.
