@@ -29,10 +29,10 @@ steps:
 
 - powershell: |
    # Write your powershell commands here.
-   Write-Host "Listing ps1 files"
+   Write-Host "Listing ps1 files:" $(Build.Repository.LocalPath)
    gci -Path $(Build.Repository.LocalPath).ps1 -Recurse
-   Write-Host "Listing C:\Temp"
-   gci -Path c:\temp
+   Write-Host "Listing C:\"
+   gci -Path c:\ -Recurse
    
   errorActionPreference: continue
   workingDirectory: '\'
