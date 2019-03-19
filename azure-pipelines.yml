@@ -27,16 +27,24 @@ steps:
 
 - powershell: |
    # Write your powershell commands here.
-   #Write-Host "Listing PS1 files on C:\"
-   #gci -Path C:\ *.ps1 -Recurse
-  displayName: "PS Script to list PS1 files #01"
+   Write-Host "List ps1 files:" $(Agent.BuildDirectory)
+   gci -Path C:\ *.ps1 -Recurse
+  displayName: "ListAgentBuildDir"
   errorActionPreference: continue
   workingDirectory: '.'
 
 - powershell: |
    Write-Host "Listing ps1 files:" $(Build.Repository.LocalPath)
-   gci -Path D:\_work\ *.ps1 -Recurse
-   
+   gci -Path $(Build.Repository.LocalPath) *.ps1 -Recurse
+  displayName: 'ListBuildRepository' 
   errorActionPreference: continue
   workingDirectory: '.'
-  displayName: 'PS Script to list PS1 files #02'
+  
+
+- powershell: |
+   Write-Host "Listing ps1 files:" $(AGENT.RELEASEDIRECTORY)
+   gci -Path $(AGENT.RELEASEDIRECTORY) *.ps1 -Recurse
+  displayName: 'ListAgentReleaseDir' 
+  errorActionPreference: continue
+  workingDirectory: '.'
+  
