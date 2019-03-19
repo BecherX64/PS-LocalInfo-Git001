@@ -27,15 +27,15 @@ steps:
 
 - powershell: |
    # Write your powershell commands here.
-   Write-Host "Listing PS1 files on C:\"
-   gci -Path C:\ *.ps1 -Recurse
+   #Write-Host "Listing PS1 files on C:\"
+   #gci -Path C:\ *.ps1 -Recurse
   displayName: "PS Script to list PS1 files #01"
   errorActionPreference: continue
   workingDirectory: '.'
 
 - powershell: |
    Write-Host "Listing ps1 files:" $(Build.Repository.LocalPath)
-   gci -Path $(Build.Repository.LocalPath).ps1 -Recurse
+   gci -Path D:\_work\ *.ps1 -Recurse
    
   errorActionPreference: continue
   workingDirectory: '.'
