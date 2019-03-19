@@ -27,8 +27,8 @@ steps:
 - powershell: write-host "Agent.BuildDirectory:" $(Agent.BuildDirectory)
   name: AgentBuildDir
 
-- powershell: [task.setvariable variable=BuildFormat]$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
-  name SetBuildFormat
+#- powershell: [task.setvariable variable=BuildFormat]$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
+#  name SetBuildFormat
 
-- powershell: Write-host "build format:" $(SetBuildFormat.BuildFormat)
+- powershell: Write-host "Build Format:" $(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
   name: EchoBuildFormat
