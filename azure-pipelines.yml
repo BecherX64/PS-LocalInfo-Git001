@@ -20,15 +20,15 @@ steps:
   
 - powershell: |
     write-host "Agent.BuildDirectory:" $(Agent.BuildDirectory)
-    write-host "##vso[task.setvariable variable=myOutputVar;isOutput=true]this is the value"
-    write-host "My Variable:" $(ShowSomeVariables.myOutputVar)
+    Write-Host "##vso[task.setvariable variable=sauce]crushed tomatoes"
+    Write-Host "sauce:" $(sauce)
   errorActionPreference: continue
   name: ShowSomeVariables
 
 - powershell: |
    # Write your powershell commands here.
    Write-Host "List ps1 files:" $(Agent.BuildDirectory)
-   gci -Path C:\ *.ps1 -Recurse
+   gci -Path $(Agent.BuildDirectory) *.ps1 -Recurse
   displayName: "ListAgentBuildDir"
   errorActionPreference: continue
   workingDirectory: '.'
