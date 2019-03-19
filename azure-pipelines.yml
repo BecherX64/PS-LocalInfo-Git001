@@ -20,6 +20,12 @@ steps:
 
 - powershell: echo "##vso[task.setvariable variable=myOutputVar;isOutput=true]this is the value"
   name: setvarStep
-- script: echo $(setvarStep.myOutputVar)
+
+- powershell: write-host "myOutputVar:" $(setvarStep.myOutputVar)
   name: echovar
+
 - powershell: write-host "Agent.BuildDirectory:" $(Agent.BuildDirectory)
+  name: AgentBuildDir
+
+- powershell: Write-host "build format:" $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
+  name: BuildFormat
