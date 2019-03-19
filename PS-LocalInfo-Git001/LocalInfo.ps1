@@ -6,6 +6,7 @@
 
 $services = Get-Service
 $ComputerInfo = Get-WMIObject Win32_ComputerSystem
+Write-Host "Computer Name:" $ComputerInfo.Name -ForegroundColor Green
 Write-Host "----=====Computer Info====-----" -ForegroundColor Green
 $ComputerInfo.Properties | ForEach-Object `
 	{
