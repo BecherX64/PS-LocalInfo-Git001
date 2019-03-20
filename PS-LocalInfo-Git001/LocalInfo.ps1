@@ -12,7 +12,8 @@ if (!(Test-Path $OutPutDir))
 	New-Item -ItemType Directory -Path $OutPutDir
 }
 
-$Output = $OutPutDir + "\OutPut_" + $date + ".txt"
+#$Output = $OutPutDir + "\OutPut_" + $date + ".txt"
+$Output = $OutPutDir + "\OutPut.txt"
 If (Test-Path $Output) 
 {
 	Remove-Item $Output
