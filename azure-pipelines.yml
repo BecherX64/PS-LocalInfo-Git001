@@ -18,23 +18,23 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
   
-- powershell: |
-    write-host "Agent.BuildDirectory:" $(Agent.BuildDirectory)
-    Write-Host "##vso[task.setvariable variable=sauce]crushed tomatoes"
-    Write-Host "sauce:" $(sauce)
-  errorActionPreference: continue
-  name: ShowSomeVariables
+#- powershell: |
+#    write-host "Agent.BuildDirectory:" $(Agent.BuildDirectory)
+#    Write-Host "##vso[task.setvariable variable=sauce]crushed tomatoes"
+#    Write-Host "sauce:" $(sauce)
+#  errorActionPreference: continue
+#  name: ShowSomeVariables
 
 - powershell: |
    # Write your powershell commands here.
-   Write-Host "List ps1 files:" $(Agent.BuildDirectory)
+   Write-Host "List ps1 files in : $(Agent.BuildDirectory):" $(Agent.BuildDirectory)
    gci -Path $(Agent.BuildDirectory) *.ps1 -Recurse
   displayName: "ListAgentBuildDir"
   errorActionPreference: continue
   workingDirectory: '.'
 
 - powershell: |
-   Write-Host "Listing ps1 files:" $(Build.Repository.LocalPath)
+   Write-Host "Listing ps1 files in : $(Build.Repository.LocalPath):" $(Build.Repository.LocalPath)
    gci -Path $(Build.Repository.LocalPath) *.ps1 -Recurse
   displayName: 'ListBuildRepository' 
   errorActionPreference: continue
@@ -42,9 +42,16 @@ steps:
   
 
 - powershell: |
-   Write-Host "Listing ps1 files:" $(AGENT.RELEASEDIRECTORY)
-   gci -Path $(AGENT.RELEASEDIRECTORY) *.ps1 -Recurse
-  displayName: 'ListAgentReleaseDir' 
+   Write-Host "Listing ps1 files in : $(System.DefaultWorkingDirectory):" $(System.DefaultWorkingDirectory)
+   gci -Path $(System.DefaultWorkingDirectory) *.ps1 -Recurse
+  displayName: 'ListSystemDefaultWorkingDir' 
   errorActionPreference: continue
   workingDirectory: '.'
-  
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: Image'
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: '*.ps1'
+    TargetFolder: 'C:\Scripts'
+    
