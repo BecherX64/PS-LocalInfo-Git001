@@ -49,15 +49,32 @@ steps:
   workingDirectory: '.'
 
 - task: CopyFiles@2
-  displayName: 'Copy Files to: Image'
+  displayName: 'Copy Files to: ArtifactStagingDirectory'
   inputs:
     SourceFolder: '$(System.DefaultWorkingDirectory)'
     Contents: '**\*'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
+- task: CopyFiles@2
+  displayName: 'Copy Files to: Image'
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: '**\*'
+    TargetFolder: 'C:\ScriptCopyBuild'
+
+
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: PSScript
+    artifactName: 'PSScript'
   displayName: "PublishBuildArtifacts"
-    
+
+- task: DownloadBuildArtifacts@0
+  displayName: 'Download Build Artifacts'
+  inputs:
+    artifactName: 'PSScript'
+    itemPattern: '**\*'
+    downloadPath: 'C:\ScriptsArtifactsBuild'
+  continueOnError: true
+
+
