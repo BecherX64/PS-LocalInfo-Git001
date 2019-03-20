@@ -1,8 +1,18 @@
 ﻿# Author: Ivan Batis
 # Script.ps1
-# Last Saved: 03/19/2019
+# Comment: Dir checks added
 
-$Output = "C:\Temp\OutPut_" + $date + "_" + $Time + ".txt"
+$Date = get-date -format yyyy-MM-dd
+$Time = get-date -format HH-mm
+
+$OutPutDir = "C:\Temp"
+
+if (!(Test-Path $OutPutDir))
+{
+	New-Item -ItemType Directory -Path $OutPutDir
+}
+
+$Output = $OutPutDir + "\OutPut_" + $date + ".txt"
 If (Test-Path $Output) 
 {
 	Remove-Item $Output
