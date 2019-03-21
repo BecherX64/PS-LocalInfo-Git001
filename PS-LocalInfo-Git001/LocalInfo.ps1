@@ -21,15 +21,16 @@ If (Test-Path $Output)
 
 $services = Get-Service
 $ComputerInfo = Get-WMIObject Win32_ComputerSystem
-Write-Host "Computer Name:" $ComputerInfo.Name -ForegroundColor Green | Add-Content $Output
-Write-Host "----=====Computer Info====-----" -ForegroundColor Green | Add-Content $Output
+"Computer Name:" + $ComputerInfo.Name | Add-Content $Output
+"----=====Computer Info====-----" | Add-Content $Output
 $ComputerInfo.Properties | ForEach-Object `
 	{
 		$_.Name +";" + $_.Value | Add-Content $Output
 	}
 
-Write-Host "----=====Running Services====-----" -ForegroundColor Green | Add-Content $Output
+"----=====Running Services====-----"  | Add-Content $Output
+"ServiceName;Status" | Add-Content $Output
 Foreach ($service in $services)
 {
-	Write-Host $service.Name ";" $service.Status ";" $service.StartType | Add-Content $Output
+	$service.Name +";"+ $service.Status +";"+ $service.StartType | Add-Content $Output
 }
