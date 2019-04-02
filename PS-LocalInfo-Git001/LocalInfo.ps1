@@ -3,7 +3,7 @@
 # Comment: Dir checks added
 
 $Date = get-date -format yyyy-MM-dd
-$Time = get-date -format HH-mm
+$Time = get-date -format HH:mm
 
 $OutPutDir = "C:\Temp"
 
@@ -22,6 +22,9 @@ If (Test-Path $Output)
 $services = Get-Service
 $ComputerInfo = Get-WMIObject Win32_ComputerSystem
 "Computer Name:" + $ComputerInfo.Name | Add-Content $Output
+"Current date & time: " + $Date +" "+ $Time| Add-Content $Output
+
+
 "----=====Computer Info====-----" | Add-Content $Output
 $ComputerInfo.Properties | ForEach-Object `
 	{
