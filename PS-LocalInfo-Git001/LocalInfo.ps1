@@ -1,6 +1,6 @@
 ﻿# Author: Ivan Batis
 # Script.ps1
-# Comment: Dir checks added
+# Comment: Dir checks added & IPAddress info added
 
 $Date = get-date -format yyyy-MM-dd
 $Time = get-date -format HH:mm
