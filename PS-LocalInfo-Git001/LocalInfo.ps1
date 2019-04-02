@@ -34,3 +34,17 @@ Foreach ($service in $services)
 {
 	$service.Name +";"+ $service.Status +";"+ $service.StartType | Add-Content $Output
 }
+
+
+"----=====IP Address====-----"  | Add-Content $Output
+"IPAddress;AddressFamily" | Add-Content $Output
+
+$NetworkCard = Get-NetAdapter | where {$_.status -like "Up"}
+Foreach ($NIC in $NetworkCard)
+{
+	$IpConfing = Get-NetIPAddress -InterfaceIndex $NIC.ifIndex
+	ForEach ($IP in $IpConfing)
+	{
+		$IP.IPAddress +";"+$IP.AddressFamily | Add-Content $Output
+	}
+}
