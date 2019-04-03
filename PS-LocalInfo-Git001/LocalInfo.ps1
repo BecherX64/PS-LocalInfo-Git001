@@ -2,6 +2,10 @@
 # Script.ps1
 # Comment: Dir checks added
 
+Param(
+[string]$OutPutFile = "OutPut.txt"
+)
+
 $Date = get-date -format yyyy-MM-dd
 $Time = get-date -format HH:mm
 
@@ -13,7 +17,7 @@ if (!(Test-Path $OutPutDir))
 }
 
 #$Output = $OutPutDir + "\OutPut_" + $date + ".txt"
-$Output = $OutPutDir + "\OutPut.txt"
+$Output = $OutPutDir + "\" + $OutPutFile
 If (Test-Path $Output) 
 {
 	Remove-Item $Output
