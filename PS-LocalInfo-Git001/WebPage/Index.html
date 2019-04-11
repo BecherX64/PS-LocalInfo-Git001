@@ -6,15 +6,30 @@
     <title></title>
 </head>
 <body>
-    <P> <h1>PowerShell Scripting</h1></P>
-    <p> <h3>Computer Details</h3>
+    <P> <h1>PowerShell Scripting</h1><br>
+    Date: <span id="myDate"></span> && Time: <span id="myTime"></span>
+    </P><br>
+    <p>
+        <h3>Computer Details</h3>
         <a href="Computer.Html">Computer Details</a>
     </p>
-    <p> <h3>IP Addres Details</h3>
+    <p>
+        <h3>IP Addres Details</h3>
         <a href="Network.Html">IP Address Details</a>
     </p>
-    <p> <h3>List of Running Services</h3>
+    <p>
+        <h3>List of Running Services</h3>
         <a href="Services.Html">List of Running Services</a>
     </p>
+
+    <script>
+        var myDate = new Date();
+        document.getElementById("myDate").innerHTML = myDate.toLocaleDateString();
+    </script>
+
+    <script>
+        var myTime = new Date();
+        document.getElementById("myTime").innerHTML = myTime.toLocaleTimeString();
+    </script>
 </body>
 </html>
