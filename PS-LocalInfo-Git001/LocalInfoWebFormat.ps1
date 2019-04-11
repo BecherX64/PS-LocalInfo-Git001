@@ -52,7 +52,7 @@ $ComputerReportLine.OSVersion  = "$($osInfo.Version) Build $($osInfo.BuildNumber
 $ComputerReportLine.Domain = $computerInfo.Domain
 $ComputerReportLine.Workgroup = $computerInfo.Workgroup
 $ComputerReportLine.DomainJoined = $computerInfo.PartOfDomain
-$ComputerReportLine.Disks = $diskInfo
+$ComputerReportLine.Disks = $diskInfo.DeviceID
 $ComputerReportLine.Date = $Date
 $ComputerReportLine.Time = $Time
 
