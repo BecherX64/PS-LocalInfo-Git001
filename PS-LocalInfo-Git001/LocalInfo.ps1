@@ -1,6 +1,7 @@
 ﻿# Author: Ivan Batis
 # Script.ps1
 # Comment: Dir checks added & IPAddress info added
+# Update
 
 Param(
 [string]$OutPutFile = "OutPut.txt"
