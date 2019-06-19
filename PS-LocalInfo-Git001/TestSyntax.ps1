@@ -7,12 +7,13 @@ $CurentPath = pwd
 Write-Host "Curent path:" $CurentPath
 try 
 {
-	ls $file
+	Write-host "File to check:" (ls $file).fullname
+	Write-Host "Looking for pattern:" $pattern
 }
 
 Catch 
 {             
-   $_.Exception.Message
+   Write-host "File NOT found:" $_.Exception.Message
    $Error.Clear()
 }
 
@@ -20,7 +21,6 @@ Catch
 If (Test-Path $file)
 {
 	$content = Get-Content $file
-	Write-Host "Looking for pattern:" $pattern
 	$select = $content | Select-String -Pattern $pattern
 
 	if ($select) 
@@ -28,7 +28,7 @@ If (Test-Path $file)
 		Write-Host "String found:" $select
 	} else 
 	{
-		throw "Required String or file not found"
+		throw "Required pattern not found in given file"
 	}
 
 } else 
