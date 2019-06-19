@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title
+</head>
+<body>
+    <P>
+        <h1>Branch version: v1.0</h1>
+        <h3>
+            DevOps for Lamas
+        </h3>
+        <br />
+        <h3>Current Time and Date:</h3>
+        Time: <span id="myTime"></span><br>
+        Date: <span id="myDate"></span>
+    </P><br>
+    <p>
+        <h3>
+            Computer Details:
+            <a href="Computer.Html">Computer Details</a>
+        </h3>
+    </p>
+    <p>
+        <h3>
+            IP Addres Details:
+            <a href="Network.Html">IP Address Details</a>
+        </h3>
+    </p>
+    <p>
+        <h3>
+            List of Running Services:
+            <a href="Services.Html">List of Running Services</a>
+        </h3>
+    </p>
+
+    <script>
+        var myDate = new Date();
+        document.getElementById("myDate").innerHTML = myDate.toLocaleDateString();
+    </script>
+
+    <script>
+        var myTime = new Date();
+        document.getElementById("myTime").innerHTML = myTime.toLocaleTimeString();
+    </script>
+</body>
+</html>
