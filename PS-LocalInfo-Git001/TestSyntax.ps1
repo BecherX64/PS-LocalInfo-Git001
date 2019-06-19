@@ -1,11 +1,21 @@
 #
 $file = ".\PS-LocalInfo-Git001\WebPage\Index.html"
-$pattern = "Version 2."
+$pattern = "Version 1."
 $Error.Clear()
 
 $CurentPath = pwd
 Write-Host "Curent path:" $CurentPath
-#ls $file
+try 
+{
+	ls $file
+}
+
+Catch 
+{             
+   $_.Exception.Message
+   $Error.Clear()
+}
+
 
 If (Test-Path $file)
 {
