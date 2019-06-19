@@ -1,5 +1,5 @@
 #
-$file = ".\WebPage\Index.html"
+$file = ".\PS-LocalInfo-Git001\WebPage\Index.html"
 $pattern = "Version 2."
 $Error.Clear()
 
