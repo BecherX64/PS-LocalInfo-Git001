@@ -5,12 +5,12 @@ $Error.Clear()
 
 $CurentPath = pwd
 Write-Host "Curent path:" $CurentPath
-ls $file
+#ls $file
 
 If (Test-Path $file)
 {
 	$content = Get-Content $file
-
+	Write-Host "Looking for pattern:" $pattern
 	$select = $content | Select-String -Pattern $pattern
 
 	if ($select) 
@@ -18,7 +18,7 @@ If (Test-Path $file)
 		Write-Host "String found:" $select
 	} else 
 	{
-		throw "Required String not found"
+		throw "Required String or file not found"
 	}
 
 } else 
