@@ -41,6 +41,7 @@ $ComputerInfo.Properties | ForEach-Object `
 Foreach ($service in $services)
 {
 	$service.Name +";"+ $service.Status +";"+ $service.StartType | Add-Content $Output
+	#Write-Host $service.Name
 }
 
 
